@@ -75,6 +75,11 @@ var startGame = function () {
     crystal.yellow.value = getRandom(1, 12);
     crystal.green.value = getRandom(1, 12);
 
+
+    $("#playerScore").html(playerScore);
+    $("#winningScore").html(winningScore);
+
+
     // Test
     console.log("winningScore: " + winningScore);
     console.log("Red: " + crystal.red.value + " | Blue: " + crystal.blue.value + " | Yellow: " + crystal.yellow.value + " | Green: " + crystal.green.value);
