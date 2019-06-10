@@ -59,17 +59,23 @@ var addPoints = function (crystal) {
 //  Determine if player win or loses by checking to see if playerScore is 
 // lessthan, greater than, or = to winningScore. Then adding respective win or loss
 var winCheck = function () {
-    if(playerScore > winningScore) {
+    if (playerScore > winningScore) {
         alert("GAME OVER! YOU LOSE! TRY AGAIN");
-        
+
         losses++
         $("#lossCount").html(losses);
+
+        // restarts game
+        startGame();
     }
     else if (playerScore == winningScore) {
         alert("Congrats! You WON!!");
-        
+
         wins++
         $("#winCount").html(wins);
+
+        // restarts game
+        startGame();
     }
 
 }
@@ -95,7 +101,7 @@ $("#green").on("click", function () {
 var startGame = function () {
 
     // Start the game off with playerScore at zero
-    var playerScore = 0;
+    playerScore = 0;
 
     // Choose new winningScore at the start of each new game (19, 120)
     winningScore = getRandom(19, 120);
