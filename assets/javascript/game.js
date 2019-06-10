@@ -44,20 +44,51 @@ var playerScore = 0
 var wins = 0
 var losses = 0
 
+// Adds crystal value to playerScore by calling crystal.value
+var addPoints = function (crystal) {
+
+    playerScore = playerScore + crystal.value;
+
+    // Reflect in html
+    $("#playerScore").html(playerScore);
+
+    // Run winCheck to see if player wins or loses
+    winCheck();
+}
+
+//  Determine if player win or loses by checking to see if playerScore is 
+// lessthan, greater than, or = to winningScore. Then adding respective win or loss
+var winCheck = function () {
+    if(playerScore > winningScore) {
+        alert("GAME OVER! YOU LOSE! TRY AGAIN");
+        
+        losses++
+        $("#lossCount").html(losses);
+    }
+    else if (playerScore == winningScore) {
+        alert("Congrats! You WON!!");
+        
+        wins++
+        $("#winCount").html(wins);
+    }
+
+}
+
+// On click for crytals which runs addPoints by calling the crystal.color
 $("#red").on("click", function () {
-    alert("test");
+    addPoints(crystal.red);
 });
 
 $("#blue").on("click", function () {
-    alert("test");
+    addPoints(crystal.blue);
 });
 
 $("#yellow").on("click", function () {
-    alert("test");
+    addPoints(crystal.yellow);
 });
 
 $("#green").on("click", function () {
-    alert("test");
+    addPoints(crystal.green);
 });
 
 // Start game
@@ -70,7 +101,7 @@ var startGame = function () {
     winningScore = getRandom(19, 120);
 
     // Set new # value for each of the crystals (1 and 12) 
-    crystal.red.value = getRandom( 1, 12);
+    crystal.red.value = getRandom(1, 12);
     crystal.blue.value = getRandom(1, 12);
     crystal.yellow.value = getRandom(1, 12);
     crystal.green.value = getRandom(1, 12);
@@ -85,3 +116,7 @@ var startGame = function () {
     console.log("Red: " + crystal.red.value + " | Blue: " + crystal.blue.value + " | Yellow: " + crystal.yellow.value + " | Green: " + crystal.green.value);
 }
 startGame();
+
+
+
+
